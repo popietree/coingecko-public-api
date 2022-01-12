@@ -1,6 +1,9 @@
 import React from "react";
 const ExchangeContext = React.createContext({
-  page: "",
+  currPage: 1,
+  pageEnd: "",
+  setPageEnd: () => {},
+  setCurrPage: () => {},
 });
 
 export default ExchangeContext;

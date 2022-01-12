@@ -1,7 +1,6 @@
 import classes from "./ExchangeItem.module.css";
 
 const ExchangeItem = (props) => {
-  console.log(props);
   return (
     <>
       <div className={classes.container}>

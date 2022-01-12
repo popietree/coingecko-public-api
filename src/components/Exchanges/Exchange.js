@@ -1,15 +1,23 @@
 import { useState, useEffect } from "react";
 import ExchangeItem from "./ExchangeItem";
 import classes from "./Exchange.module.css";
+import ExchangeContext from "../../store/exchange-context";
+import { useContext } from "react";
 
 const Exchange = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [numExs, setNumExs] = useState();
+  const [totalNumExs, setTotalNumExs] = useState();
+
+  const { currPage } = useContext(ExchangeContext);
+  const { pageEnd } = useContext(ExchangeContext);
+
+  const { setPageEnd } = useContext(ExchangeContext);
 
   const fetchData = async (pageNum) => {
-    const url = `https://api.coingecko.com/api/v3/exchanges?per_page=10&page=${pageNum}}`;
+    const exsPerPage = 10;
+    const url = `https://api.coingecko.com/api/v3/exchanges?per_page=${exsPerPage}&page=${pageNum}}`;
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -22,8 +30,12 @@ const Exchange = () => {
     }
 
     const responseData = await response.json();
-    const totalExs = response.headers.get("total");
-    setNumExs(totalExs);
+    const totalNumExs = response.headers.get("total");
+
+    // get total number of displayed pages by dividing total number of exchanges by number exchanges per page (10)
+    const totalNumPages = Math.ceil(totalNumExs / exsPerPage);
+
+    setPageEnd(totalNumPages);
 
     const loadedExsData = [];
 
@@ -42,14 +54,15 @@ const Exchange = () => {
   };
 
   useEffect(() => {
-    fetchData(1).catch((error) => {
+    fetchData(currPage).catch((error) => {
       setIsLoading(false);
       setError(error.message);
     });
+
     console.log("fire once");
-  }, []);
+  }, [currPage]);
   // console.log(data);
-  console.log(numExs);
+  console.log(currPage);
 
   const listOfExs = data.map((item) => (
     <ExchangeItem
