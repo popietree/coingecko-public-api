@@ -1,13 +1,17 @@
-import React from "react";
+/* eslint-disable comma-dangle */
+import React from 'react';
+
 const ExchangeContext = React.createContext({
   currPage: 1,
   setCurrPage: () => {},
-  pageEnd: "",
+  pageEnd: '',
   setPageEnd: () => {},
   currData: [],
   setCurrData: () => {},
-  detailClick: "",
+  detailClick: '',
   setDetailClick: () => {},
+  isLoading: '',
+  setIsLoading: () => {},
 });
 
 export default ExchangeContext;

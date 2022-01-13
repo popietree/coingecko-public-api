@@ -1,0 +1,7 @@
+/* shared flex box styles  */
+ul {
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0rem;
+}
