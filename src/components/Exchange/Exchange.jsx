@@ -74,7 +74,7 @@ function Exchange(props) {
     return <p> {error}</p>;
   }
 
-  return <ul>{listOfExs}</ul>;
+  return <ul className={classes.exsList}>{listOfExs}</ul>;
 }
 
 export default Exchange;

@@ -8,6 +8,7 @@ import useTrim from '../../hooks/useTrim';
 function DetailItem() {
   const { detailClick } = useContext(ExchangeContext);
 
+  console.log(detailClick);
   return (
     <div className={classes.container}>
       <div className={classes.linkMain}>
@@ -27,7 +28,7 @@ function DetailItem() {
           <div>Description: Cryto Exchange... </div>
           <div>
             Established:
-            {detailClick.year}
+            {detailClick.year_established}
           </div>
           <div>
             Country:
@@ -36,7 +37,7 @@ function DetailItem() {
 
           <div>
             Trust Rank:
-            {detailClick.trustRank}
+            {detailClick.trust_score_rank}
           </div>
           {/* Need fecth social media link */}
           <a href={detailClick.url}>
