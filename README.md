@@ -1,1 +1,0 @@
-# coingecko-public-api

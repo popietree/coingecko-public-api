@@ -1,0 +1,29 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.prev,
+.next {
+  color: #262626;
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  background-color: white;
+}
+
+button {
+  cursor: pointer;
+  color: rgb(19, 19, 19);
+}
+
+button:visited,
+button:hover,
+button:active {
+  cursor: pointer;
+  color: rgb(130, 130, 130);
+}
