@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 import React, { useState } from 'react';
 import ExchangeContext from './exchange-context';
 
@@ -21,7 +20,7 @@ function ExchangeProvider(props) {
       detailClick,
       setDetailClick,
       isLoading,
-      setIsLoading,
+      setIsLoading
     }),
     [currPage, detailClick, pageEnd, currData]
   );

@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 import React from 'react';
 
 const ExchangeContext = React.createContext({
@@ -11,7 +10,7 @@ const ExchangeContext = React.createContext({
   detailClick: '',
   setDetailClick: () => {},
   isLoading: '',
-  setIsLoading: () => {},
+  setIsLoading: () => {}
 });
 
 export default ExchangeContext;

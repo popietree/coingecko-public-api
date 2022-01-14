@@ -1,12 +1,9 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable comma-dangle */
-
 import React, { useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import ExchangeContext from '../../store/exchange-context';
 import Card from '../Layout/Card';
 import classes from './ExchangeItem.module.css';
+import useTrim from '../../hooks/useTrim';
 
 function ExchangeItem(props) {
   const { currData } = useContext(ExchangeContext);
@@ -17,38 +14,10 @@ function ExchangeItem(props) {
   const history = useHistory();
 
   const clickHandler = () => {
-    const detailData = [];
     // BUG: Detail Item needs data to display after url click
     history.replace(`/details/${name}`);
 
-    // eslint-disable-next-line no-restricted-syntax
-    for (const [i, ele] of currData.entries()) {
-      if (currData[i].name === props.name) {
-        detailData.push({
-          name: currData[i].name,
-          country: currData[i].country,
-          url: currData[i].url,
-          logo: currData[i].image,
-          trustRank: currData[i].trust_score_rank,
-          year: currData[i].year_established,
-        });
-      }
-    }
-
-    // currData.forEach((ele, i) => {
-    //   if (currData[i].name === name) {
-    //     // console.log(currData[i].name === name);
-
-    //     detailData.push({
-    //       name: currData[i].name,
-    //       country: currData[i].country,
-    //       url: currData[i].url,
-    //       logo: currData[i].image,
-    //       trustRank: currData[i].trust_score_rank,
-    //       year: currData[i].year_established,
-    //     });
-    //   }
-    // });
+    const detailData = currData.find((item) => item.name === name);
 
     setDetailClick(detailData);
   };
@@ -56,29 +25,28 @@ function ExchangeItem(props) {
   return (
     <Card>
       <button type="button" className={classes.btnDiv} onClick={clickHandler}>
-        <ul>
-          <div>
-            Exchange:
-            {name}
-          </div>
+        <ul className={classes.exsList}>
+          <ul className={classes.mainBox}>
+            <div className={classes.exchName}>{name}</div>
+            <div>
+              <img src={logo} alt="coin logo" />
+            </div>
+          </ul>
+          <ul className={classes.infoBox}>
+            <div>
+              Country:
+              {country}
+            </div>
 
-          <div className={classes.urlLink}>
-            <img src={logo} alt="coin logo" />
-          </div>
-
-          <div>
-            Country:
-            {country}
-          </div>
-
-          <div>
-            Trust Rank:
-            {trustRank}
-          </div>
+            <div>
+              Trust Rank:
+              {trustRank}
+            </div>
+          </ul>
         </ul>
       </button>
       <div className={classes.anchor}>
-        <a href={url}>{url}</a>
+        <a href={url}>{useTrim(url)}</a>
       </div>
     </Card>
   );

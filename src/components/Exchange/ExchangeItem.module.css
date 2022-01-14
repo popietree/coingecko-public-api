@@ -1,15 +1,27 @@
-ul {
+.exchName {
+  color: rgb(90, 90, 90);
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.infoBox {
+  color: rgb(90, 90, 90);
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+}
+.mainBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.exsList {
   padding-left: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0rem;
+  gap: 1rem;
   text-align: start;
-}
-
-.urlLink {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
 }
 
 .anchor {
@@ -27,14 +39,30 @@ ul {
 }
 
 a {
-  color: black;
+  color: rgb(19, 19, 19);
+  text-decoration: none;
 }
 
-a:visited {
-  color: rgb(158, 158, 158);
-}
-
+a:visited,
 a:hover,
 a:active {
-  color: rgb(84, 84, 84);
+  color: rgb(130, 130, 130);
+}
+
+@media (min-width: 768px) {
+  html {
+    /* 9px / 16px  */
+    font-size: 110%;
+  }
+  .exsList {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .infoBox {
+    align-self: end;
+  }
+
+  .exsList {
+    align-content: center;
+  }
 }

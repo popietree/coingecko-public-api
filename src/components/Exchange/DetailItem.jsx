@@ -3,47 +3,46 @@ import { Link } from 'react-router-dom';
 import Card from '../Layout/Card';
 import ExchangeContext from '../../store/exchange-context';
 import classes from './DetailItem.module.css';
+import useTrim from '../../hooks/useTrim';
 
 function DetailItem() {
   const { detailClick } = useContext(ExchangeContext);
-  // ? social media links
-  // ? description
 
   return (
     <div className={classes.container}>
       <div className={classes.linkMain}>
-        <Link to="/">Back to main</Link>
+        <Link to="/">
+          <button className={classes.btnBack} type="button">
+            Back to main
+          </button>
+        </Link>
       </div>
       <Card>
         <ul>
-          <div>{detailClick[0].id}</div>
-          <div>
-            Exchange:
-            {detailClick[0].name}
-          </div>
+          <div className={classes.exchName}>{detailClick.name}</div>
 
           <div>
-            <img src={detailClick[0].logo} alt="coin logo" />
+            <img src={detailClick.image} alt="coin logo" />
           </div>
+          <div>Description: Cryto Exchange... </div>
           <div>
-            Year:
-            {detailClick[0].year}
+            Established:
+            {detailClick.year}
           </div>
           <div>
             Country:
-            {detailClick[0].country}
+            {detailClick.country}
           </div>
 
           <div>
             Trust Rank:
-            {detailClick[0].trustRank}
+            {detailClick.trustRank}
           </div>
-          {/* Need fecth social media site */}
-          <a href={detailClick[0].url}>
-            Social Media:
-            {detailClick[0].url}
+          {/* Need fecth social media link */}
+          <a href={detailClick.url}>
+            Site:
+            {useTrim(detailClick.url)}
           </a>
-          <div>Description: Cryto Exchange... </div>
         </ul>
       </Card>
     </div>

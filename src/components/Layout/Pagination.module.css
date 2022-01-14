@@ -16,15 +16,14 @@ button {
   background-color: white;
 }
 
-a {
-  color: black;
+button {
+  cursor: pointer;
+  color: rgb(19, 19, 19);
 }
 
-a:visited {
-  color: rgb(158, 158, 158);
-}
-
-a:hover,
-a:active {
-  color: rgb(84, 84, 84);
+button:visited,
+button:hover,
+button:active {
+  cursor: pointer;
+  color: rgb(130, 130, 130);
 }
