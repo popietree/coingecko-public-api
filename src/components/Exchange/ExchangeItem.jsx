@@ -22,14 +22,23 @@ function ExchangeItem(props) {
     setDetailClick(detailData);
   };
 
+  const linkHandler = (e) => {
+    e.stopPropagation();
+  };
+
   return (
-    <Card>
-      <button type="button" className={classes.btnDiv} onClick={clickHandler}>
+    <button type="button" className={classes.btnDiv} onClick={clickHandler}>
+      <Card>
         <ul className={classes.exsList}>
           <ul className={classes.mainBox}>
             <div className={classes.exchName}>{name}</div>
             <div>
               <img src={logo} alt="coin logo" />
+            </div>
+            <div className={classes.anchor}>
+              <a onClick={(e) => linkHandler(e)} href={url}>
+                {useTrim(url)}
+              </a>
             </div>
           </ul>
           <ul className={classes.infoBox}>
@@ -44,11 +53,8 @@ function ExchangeItem(props) {
             </div>
           </ul>
         </ul>
-      </button>
-      <div className={classes.anchor}>
-        <a href={url}>{useTrim(url)}</a>
-      </div>
-    </Card>
+      </Card>
+    </button>
   );
 }
 
