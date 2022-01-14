@@ -8,7 +8,6 @@ import useTrim from '../../hooks/useTrim';
 function DetailItem() {
   const { detailClick } = useContext(ExchangeContext);
 
-  console.log(detailClick);
   return (
     <div className={classes.container}>
       <div className={classes.linkMain}>
