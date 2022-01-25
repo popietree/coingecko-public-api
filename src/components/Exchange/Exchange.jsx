@@ -30,13 +30,16 @@ function Exchange(props) {
 
     const responseData = await response.json();
 
+    const filtered = responseData.filter((item) => item.id !== 'binance');
+
     const totalNumExs = response.headers.get('total');
 
     const totalNumPages = Math.ceil(totalNumExs / exsPerPage);
 
-    setResData(responseData);
+    console.log(responseData);
+    setResData(filtered);
 
-    setCurrData(responseData);
+    setCurrData(filtered);
 
     setPageEnd(totalNumPages);
     setIsLoading(false);

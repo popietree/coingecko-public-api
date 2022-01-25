@@ -28,7 +28,6 @@ function Pagination() {
     });
   };
 
-  // BUG allow prev page group jump
   const goToPrevPage = () => {
     setCurrPage((prevState) => {
       if (currPage === 1) {
@@ -38,7 +37,6 @@ function Pagination() {
     });
   };
 
-  // need key?
   const paginationContent = paginationGroup.map((item) => (
     <button type="button" onClick={changePage} key={Math.random() + item}>
       <span>{item}</span>

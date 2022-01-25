@@ -9,8 +9,8 @@ const ExchangeContext = React.createContext({
   setCurrData: () => {},
   detailClick: '',
   setDetailClick: () => {},
-  isLoading: '',
-  setIsLoading: () => {}
+  isLoading: false,
+  setIsLoading: () => {},
 });
 
 export default ExchangeContext;

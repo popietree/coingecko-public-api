@@ -11,6 +11,10 @@ html {
 
 body {
   margin: 0;
-  background-color: #d4c9c9;
+
   padding: 1rem 1rem;
+}
+
+.headingSecondary {
+  font-size: 3.4rem;
 }

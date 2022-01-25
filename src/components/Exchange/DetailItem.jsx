@@ -1,13 +1,17 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Card from '../Layout/Card';
 import ExchangeContext from '../../store/exchange-context';
 import classes from './DetailItem.module.css';
 import useTrim from '../../hooks/useTrim';
 
 function DetailItem() {
+  const history = useHistory();
   const { detailClick } = useContext(ExchangeContext);
-
+  const clickHandler = () => {
+    // temp back button fix
+    history.push('/');
+  };
   return (
     <div className={classes.container}>
       <div className={classes.linkMain}>
@@ -38,8 +42,8 @@ function DetailItem() {
             Trust Rank:
             {detailClick.trust_score_rank}
           </div>
-          {/* Need fecth social media link */}
-          <a href={detailClick.url}>
+
+          <a onClick={clickHandler} href={detailClick.url}>
             Site:
             {useTrim(detailClick.url)}
           </a>

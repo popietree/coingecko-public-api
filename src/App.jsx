@@ -20,7 +20,6 @@ function App() {
           {!isLoading && <Pagination />}
         </Route>
         <Route path="/details/:exchange">
-          {/* Error route to main */}
           <ExchangeDetail />
         </Route>
       </Switch>
